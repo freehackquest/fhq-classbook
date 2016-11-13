@@ -151,6 +151,10 @@ window.fhq.classbook = [
 				'id': 'linux_structure',
 				'name' : 'Структура каталогов',
 				'link' : 'chapter02/structure.md'
+			},{
+				'id': 'linux_tar',
+				'name' : 'Архиватор tar',
+				'link' : 'chapter02/tar.md'
 			}
 		]
 	}, {
