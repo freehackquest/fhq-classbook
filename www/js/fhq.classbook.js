@@ -1,7 +1,7 @@
 if(!window.fhq) window.fhq = {};
 if(!window.fhq.ui) window.fhq.ui = {};
 
-window.fhq.ui.loadClassbookItem = function(link){
+window.fhq.ui.loadClassbookItem = function(link, cbid){
 	console.log("link:" + link);
 	$.ajax({
 		url: link + "?t=" + Date.now(),
@@ -18,6 +18,9 @@ window.fhq.ui.loadClassbookItem = function(link){
 			// html
 			html = response;
 		}
+		if(cbid != undefined){
+			fhq.changeLocationState({'cbid': cbid});
+		}
 		$('.fhqrightinfo').html(html);
 	}).fail(function(){
 		$('.fhqrightinfo').html("Not found");
@@ -33,8 +36,11 @@ window.fhq.ui.loadClassbookSubmenu = function(submenu){
 		fhq.ui.classbook_numbers[numbers_len-1] = fhq.ui.classbook_numbers[numbers_len-1] + 1;
 		var num = fhq.ui.classbook_numbers.join('.');
 
+		if(o.id)
+			fhq.classbookCache[o.id] = o;
+
 		if(o.link && o.name){
-			$('.fhqleftlist .classbook .content').append('<div class="fhqleftitem" link="' + o.link + '"><div class="name">' + num + ' ' + o.name + '</div></div>');	
+			$('.fhqleftlist .classbook .content').append('<div class="fhqleftitem" link="' + o.link + '" cbid="' + o.id + '" ><div class="name">' + num + ' ' + o.name + '</div></div>');	
 		}else if(o.name){
 			$('.fhqleftlist .classbook .content').append('<div class="fhqleftitem"><div class="name">' + num + ' ' + o.name + '</div></div>');	
 		}
@@ -46,18 +52,34 @@ window.fhq.ui.loadClassbookSubmenu = function(submenu){
 	fhq.ui.classbook_numbers.pop();
 }
 
+window.fhq.ui.classbookSearchLinkByID = function(cbid){
+	if(fhq.classbookCache[cbid]){
+		return fhq.classbookCache[cbid].link;
+	}
+}
+
+window.fhq.classbookCache = {};
+
 window.fhq.ui.loadClassbook = function(){
 	$('#content_page').html('<div class="fhqrightinfo"></div><div class="fhqleftlist"></div>');
 	$('.fhqleftlist').html('');
 	$('.fhqleftlist').append('<div class="classbook"><div class="icon">Учебник</div><div class="content"></div></div>');
 	
 	fhq.ui.classbook_numbers = [];
-	
+	fhq.classbookCache = {}
 	fhq.ui.loadClassbookSubmenu(fhq.classbook);
 
 	$('.fhqleftitem').unbind('click').bind('click', function(){
-		fhq.ui.loadClassbookItem($(this).attr('link'));
+		var link = $(this).attr('link');
+		var cbid = $(this).attr('cbid');
+		fhq.ui.loadClassbookItem(link, cbid);
 	});
+	if(fhq.containsPageParam("cbid")){
+		var cbid = fhq.pageParams["cbid"];
+		console.log("cbid = " + cbid);
+		var link = fhq.ui.classbookSearchLinkByID(cbid);
+		fhq.ui.loadClassbookItem(link, cbid);
+	}
 }
 
 
@@ -76,6 +98,21 @@ $(document).ready(function(){
 
 window.fhq.classbook = [
 	{
+		'id': 'trivia',
+		'name' : 'Глава 01. Trivia',
+		'link' : 'chapter01/chapter01.md',
+		'submenu' : [
+			{
+				'id': 'trivia_base64',
+				'name' : 'Base64',
+				'link' : 'chapter01/base64.md'
+			}, {
+				'id': 'trivia_hex',
+				'name' : 'Hex',
+				'link' : 'chapter01/hex.md'
+			}
+		]
+	}, {
 		'name' : 'Информатика',
 		'submenu' : [
 			{
@@ -94,8 +131,7 @@ window.fhq.classbook = [
 				'name' : 'Звуковая информация',
 				'link' : 'about_binary_sound.html'
 			}, {
-				'name' : 'base64 и hex',
-				'link' : 'items/about/base64_and_hex.md'
+				
 			}, {
 				'name' : 'Бинарные операции, конвертирование из/в 2,10,16чные системы счисления',
 				'link' : 'about_binary_operations.html'
