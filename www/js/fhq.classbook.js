@@ -223,6 +223,18 @@ window.fhq.classbook = [
 				'id': 'linux_ifconfig',
 				'name' : 'Сетевые настройки. ifconfig',
 				'link' : 'chapter02/ifconfig.md'
+			},{
+				'id': 'linux_nano',
+				'name' : 'Редактор. nano',
+				'link' : 'chapter02/nano.md'
+			},{
+				'id': 'linux_vim',
+				'name' : 'Редактор. vim',
+				'link' : 'chapter02/vim.md'
+			},{
+				'id': 'linux_diff',
+				'name' : 'Сравнение файлов. diff',
+				'link' : 'chapter02/diff.md'
 			}
 		]
 	}, {
