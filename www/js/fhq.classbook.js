@@ -155,6 +155,74 @@ window.fhq.classbook = [
 				'id': 'linux_tar',
 				'name' : 'Архиватор tar',
 				'link' : 'chapter02/tar.md'
+			},{
+				'id': 'linux_lshw',
+				'name' : 'Устройства lshw',
+				'link' : 'chapter02/lshw.md'
+			},{
+				'id': 'linux_ls',
+				'name' : 'Список каталогов ls',
+				'link' : 'chapter02/ls.md'
+			},{
+				'id': 'linux_cd',
+				'name' : 'Смена каталога cd',
+				'link' : 'chapter02/cd.md'
+			},{
+				'id': 'linux_top',
+				'name' : 'Диспетчер задач top',
+				'link' : 'chapter02/top.md'
+			},{
+				'id': 'linux_ps',
+				'name' : 'Диспетчер процессов ps',
+				'link' : 'chapter02/ps.md'
+			},{
+				'id': 'linux_kill',
+				'name' : 'Закрыть процесс. kill',
+				'link' : 'chapter02/kill.md'
+			},{
+				'id': 'linux_cat',
+				'name' : 'Вывод файла. cat',
+				'link' : 'chapter02/cat.md'
+			},{
+				'id': 'linux_strings',
+				'name' : 'Вывод строк из файла. strings',
+				'link' : 'chapter02/strings.md'
+			},{
+				'id': 'linux_less',
+				'name' : 'Постраничный вывод. less',
+				'link' : 'chapter02/less.md'
+			},{
+				'id': 'linux_more',
+				'name' : 'Постраничный вывод. more',
+				'link' : 'chapter02/more.md'
+			},{
+				'id': 'linux_find',
+				'name' : 'Поиск по файлам. find',
+				'link' : 'chapter02/find.md'
+			},{
+				'id': 'linux_sudo',
+				'name' : 'Выполнения от рута. sudo',
+				'link' : 'chapter02/sudo.md'
+			},{
+				'id': 'linux_grep',
+				'name' : 'Фильтр вывода. grep',
+				'link' : 'chapter02/grep.md'
+			},{
+				'id': 'linux_ping',
+				'name' : 'Проверка сети. ping',
+				'link' : 'chapter02/ping.md'
+			},{
+				'id': 'linux_netstat',
+				'name' : 'Сетевая статистика. netstat',
+				'link' : 'chapter02/netstat.md'
+			},{
+				'id': 'linux_ip',
+				'name' : 'Сетевые настройки. ip',
+				'link' : 'chapter02/ip.md'
+			},{
+				'id': 'linux_ifconfig',
+				'name' : 'Сетевые настройки. ifconfig',
+				'link' : 'chapter02/ifconfig.md'
 			}
 		]
 	}, {
@@ -309,14 +377,6 @@ window.fhq.classbook = [
 			}, {
 				'name' : 'Фильтры и другие полезные утилиты',
 				'link' : 'unix_filters_and_usefull_utilites.html'
-			}
-		]
-	}, {
-		'name' : 'Linux',
-		'submenu' : [
-			{
-				'name' : 'Просто полезные команды',
-				'link' : 'linux_usefull_console_commands.html'
 			}
 		]
 	}, {
