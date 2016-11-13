@@ -64,6 +64,34 @@ window.fhq.ui.loadClassbook = function(){
 	$('#content_page').html('<div class="fhqrightinfo"></div><div class="fhqleftlist"></div>');
 	$('.fhqleftlist').html('');
 	$('.fhqleftlist').append('<div class="classbook"><div class="icon">Учебник</div><div class="content"></div></div>');
+
+	function applyDark(){
+		$("body").addClass('dark');
+		$('#btnmenu_colorscheme img').attr({'src': 'http://freehackquest.com/images/menu/lightside_150x150.png'});
+		$('#btnmenu_colorscheme_text').html(fhq.t('Light'));
+		localStorage.setItem('colorscheme', 'dark');
+	}
+	
+	function applyLight(){
+		$("body").removeClass('dark');
+		$('#btnmenu_colorscheme img').attr({'src': 'http://freehackquest.com/images/menu/darkside_150x150.png'});
+		$('#btnmenu_colorscheme_text').html(fhq.t('Dark'));
+		localStorage.setItem('colorscheme', 'light');
+	}
+
+	$('#btnmenu_colorscheme').unbind().bind('click', function(e){
+		if($("body").hasClass("dark")){
+			applyLight();
+		}else{
+			applyDark();
+		}
+	});
+	
+	if(localStorage.getItem('colorscheme') == 'dark'){
+		applyDark();
+	}else{
+		applyLight();
+	}
 	
 	fhq.ui.classbook_numbers = [];
 	fhq.classbookCache = {}
@@ -80,6 +108,8 @@ window.fhq.ui.loadClassbook = function(){
 		var link = fhq.ui.classbookSearchLinkByID(cbid);
 		fhq.ui.loadClassbookItem(link, cbid);
 	}
+	
+	
 }
 
 
