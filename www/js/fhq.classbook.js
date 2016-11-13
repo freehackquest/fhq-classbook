@@ -143,6 +143,17 @@ window.fhq.classbook = [
 			}
 		]
 	}, {
+		'id': 'linux',
+		'name' : 'Глава 02. Linux',
+		'link' : 'chapter02/chapter02.md',
+		'submenu' : [
+			{
+				'id': 'linux_structure',
+				'name' : 'Структура каталогов',
+				'link' : 'chapter02/structure.md'
+			}
+		]
+	}, {
 		'name' : 'Информатика',
 		'submenu' : [
 			{
@@ -300,12 +311,6 @@ window.fhq.classbook = [
 		'name' : 'Linux',
 		'submenu' : [
 			{
-				'name': 'Кратко о Linux',
-				'link' : 'linux_about.html'
-			}, {
-				'name' : 'Структура Linux (где что храниться)',
-				'link' : 'linux_struct.html'
-			}, {
 				'name' : 'Просто полезные команды',
 				'link' : 'linux_usefull_console_commands.html'
 			}
